@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { dispararAlerta } from './alertaGlobal'; 
 
+/**
+ * @fileoverview Configuración principal del enrutador de Vue.
+ * Gestiona las rutas de la aplicación y protege los endpoints mediante Navigation Guards.
+ */
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -37,6 +42,12 @@ const router = createRouter({
     }
   ]
 });
+
+/**
+ * Guardián de Navegación Global (Navigation Guard).
+ * Se ejecuta antes de cada cambio de ruta para verificar los permisos del usuario
+ * leyendo el token y el rol almacenados en el localStorage.
+ */
 
 router.beforeEach((to, _from, next) => {
   const token = localStorage.getItem('auth');
