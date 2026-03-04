@@ -1,6 +1,20 @@
 import axios from 'axios';
 
+/**
+ * @fileoverview Acciones relacionadas con la autenticación de usuarios.
+ * Maneja la conexión con el endpoint de login del backend.
+ */
+
 const API_BASE = 'http://localhost:8080';
+
+/**
+ * Realiza el inicio de sesión contra el servidor utilizando Basic Auth.
+ * Determina el rol del usuario basándose en los códigos de estado HTTP devueltos.
+ * * @param {string} username - El nombre de usuario ingresado en el formulario.
+ * @param {string} password - La contraseña ingresada en el formulario.
+ * @returns {Promise<{rol: string, token: string}>} Objeto con el rol detectado y el token codificado.
+ * @throws {Error} Si las credenciales son incorrectas (401) o hay un fallo de red.
+ */
 
 // Revisa si es Admin o User
 export const realizarLogin = async (username: string, password: string) => {
