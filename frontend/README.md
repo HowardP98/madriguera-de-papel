@@ -1,48 +1,48 @@
 # 🎨 Library System - Frontend UI
 
-Interfaz de usuario moderna y reactiva para la gestión de la biblioteca, diseñada para ofrecer una experiencia fluida, rápida y escalable.
+Modern and reactive user interface for library management, designed to provide a smooth, fast, and scalable experience.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
-* **Vue.js 3**: Framework progresivo para construir interfaces de usuario reactivas.
-* **Tailwind CSS**: Framework de utilidades para diseño moderno y responsive.
-* **Vite**: Herramienta de desarrollo ultrarrápida para frontend.
-* **Axios**: Cliente HTTP para consumir la API REST del backend.
-
----
-
-## 🚀 Configuración y Ejecución
-
-### 🔧 Requisitos Previos
-
-* Node.js (versión 18 o superior recomendada).
-* npm o yarn.
+* **Vue.js 3**: Progressive framework for building reactive user interfaces.
+* **Tailwind CSS**: Utility-first framework for modern and responsive design.
+* **Vite**: Ultra-fast frontend build tool.
+* **Axios**: HTTP client for consuming the backend REST API.
 
 ---
 
-### 📥 Instalación
+## 🚀 Setup & Running
 
-1. Entra en la carpeta del frontend e instala las dependencias:
+### 🔧 Prerequisites
+
+* Node.js (version 18 or higher recommended)
+* npm or yarn
+
+---
+
+### 📥 Installation
+
+1. Navigate to the frontend folder and install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Configura la conexión con la API creando un archivo `.env` en la raíz del frontend:
+2. Set up the API connection by creating a `.env` file in the frontend root:
 
 ```env
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
-3. Inicia el servidor de desarrollo:
+3. Start the development server:
 
 ```bash
 npm run dev
 ```
 
-4. La aplicación estará disponible en:
+4. The app will be available at:
 
 ```
 http://localhost:5173
@@ -50,15 +50,15 @@ http://localhost:5173
 
 ---
 
-### 🏗️ Build de Producción
+### 🏗️ Production Build
 
-Para generar la versión optimizada:
+To generate the optimized production build:
 
 ```bash
 npm run build
 ```
 
-Para previsualizar el build:
+To preview the production build:
 
 ```bash
 npm run preview
@@ -66,32 +66,41 @@ npm run preview
 
 ---
 
-## 📦 Estructura del Proyecto
+## 📦 Project Structure
 
 ```
 frontend/
- ├── public/                # Archivos estáticos
+ ├── .vscode/              # Editor configuration
+ ├── public/               # Static files
  ├── src/
- │   ├── assets/            # Recursos (imágenes, estilos)
- │   ├── components/        # Componentes reutilizables
- │   ├── views/             # Vistas principales
- │   ├── router/            # Configuración de rutas
- │   ├── services/          # Llamadas a la API (Axios)
- │   ├── store/ (opcional)  # Estado global (si aplica)
- │   ├── App.vue            # Componente raíz
- │   └── main.js            # Punto de entrada
- ├── .env                   # Variables de entorno
- ├── index.html             # HTML principal
- └── package.json
+ │   ├── assets/           # Resources (images, styles)
+ │   ├── components/       # Reusable components
+ │   ├── views/            # Main views/pages
+ │   ├── router/           # Routing configuration
+ │   ├── services/         # API calls (Axios)
+ │   ├── store/ (optional) # Global state management
+ │   ├── App.vue           # Root component
+ │   └── main.ts           # Entry point
+ ├── .env.example          # Environment variables example
+ ├── .gitignore
+ ├── Dockerfile            # Frontend container setup
+ ├── index.html            # Main HTML file
+ ├── package.json
+ ├── package-lock.json
+ ├── tsconfig.json
+ ├── tsconfig.app.json
+ ├── tsconfig.node.json
+ ├── vite.config.ts
+ └── README.md
 ```
 
 ---
 
-## 🔌 Integración con Backend
+## 🔌 Backend Integration
 
-El frontend se comunica con la API REST del backend mediante Axios.
+The frontend communicates with the backend REST API using Axios.
 
-Ejemplo de configuración básica:
+Basic configuration example:
 
 ```javascript
 import axios from "axios";
@@ -105,29 +114,29 @@ export default api;
 
 ---
 
-## 📚 Funcionalidades Principales
+## 📚 Main Features
 
-* 📖 Visualización de catálogo de libros
-* ➕ Creación y edición de libros
-* ❌ Eliminación de registros
-* 👤 Gestión de usuarios
-* 🔄 Gestión de préstamos
-* 🔍 Búsqueda y filtrado en tiempo real
+* 📖 Book catalog visualization
+* ➕ Create and update books
+* ❌ Delete records
+* 👤 User management
+* 🔄 Loan management
+* 🔍 Real-time search and filtering
 
 ---
 
 ## 🎨 UI / UX
 
-* Diseño responsive adaptado a móvil y escritorio
-* Componentes reutilizables
-* Interfaz limpia basada en utilidades de Tailwind
-* Navegación SPA (Single Page Application)
+* Fully responsive design (mobile & desktop)
+* Reusable component architecture
+* Clean UI powered by Tailwind utilities
+* SPA navigation (Single Page Application)
 
 ---
 
-## 🧪 Testing (Opcional)
+## 🧪 Testing (Optional)
 
-Si añades testing (por ejemplo con Vitest):
+If you add testing (e.g., with Vitest):
 
 ```bash
 npm run test
@@ -135,26 +144,43 @@ npm run test
 
 ---
 
-## 🌍 Variables de Entorno
+## 🌍 Environment Variables
 
-Ejemplo:
 Create a `.env` file based on `.env.example`:
 
-```env
+```bash
 cp .env.example .env
+```
+
+Example:
+
+```env
 VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
 ---
 
-## 📌 Notas
+## 🐳 Docker Support
 
-* Asegúrate de que el backend esté corriendo antes de usar el frontend.
-* Puedes modificar la URL de la API según el entorno (dev/prod).
-* Ideal para desplegar en plataformas como Vercel o Netlify.
+The project includes a `Dockerfile` for containerized deployment.
+
+Example:
+
+```bash
+docker build -t library-frontend .
+docker run -p 5173:5173 library-frontend
+```
 
 ---
 
-## 👨‍💻 Autor
+## 📌 Notes
 
-Desarrollado como parte del sistema de gestión de biblioteca (Frontend UI).
+* Make sure the backend is running before using the frontend.
+* You can adjust the API URL depending on the environment (dev/prod).
+* Suitable for deployment on platforms like Vercel, Netlify, or Docker-based environments.
+
+---
+
+## 👨‍💻 Author
+
+Developed as part of a Library Management System (Frontend UI).
