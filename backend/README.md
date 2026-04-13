@@ -1,56 +1,58 @@
 # ⚙️ Library System - Backend API
 
-Este es el núcleo lógico del sistema de biblioteca, desarrollado con un enfoque en robustez y escalabilidad utilizando el ecosistema de Java.
+This is the core logic of the library system, built with a focus on robustness, scalability, and modern Java best practices.
 
 ---
 
-## 🛠️ Stack Tecnológico
+## 🛠️ Tech Stack
 
-* **Java 21**: Aprovechando las últimas características de rendimiento del lenguaje.
-* **Spring Boot**: Framework principal para la creación de la API REST.
-* **Spring Data JPA**: Para la persistencia de datos y comunicación con MySQL.
-* **Hibernate**: Motor ORM para el mapeo de objetos.
-* **Maven**: Gestor de dependencias y construcción.
-
----
-
-## 🚀 Configuración y Ejecución
-
-### 🔧 Requisitos Previos
-
-* JDK 21 instalado.
-* MySQL Server (o un contenedor Docker con MySQL).
-* Maven instalado.
+* **Java 21**: Leveraging the latest performance and language features.
+* **Spring Boot**: Main framework for building the REST API.
+* **Spring Data JPA**: Data persistence and interaction with MySQL.
+* **Hibernate**: ORM engine for object-relational mapping.
+* **Maven**: Dependency management and build tool.
 
 ---
 
-### 📥 Instalación
+## 🚀 Setup & Running
 
-1. Configura la base de datos en el archivo `src/main/resources/application.properties` (o `application.yml`):
+### 🔧 Prerequisites
+
+* JDK 21 installed
+* MySQL Server (or Docker container running MySQL)
+* Maven installed (or use the included wrapper)
+
+---
+
+### 📥 Installation
+
+1. Configure the database in `src/main/resources/application.properties` (or `application.yml`):
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/library_db
-spring.datasource.username=tu_usuario
-spring.datasource.password=tu_contraseña
+spring.datasource.username=your_username
+spring.datasource.password=your_password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
 ```
 
-2. Compila el proyecto:
+2. Build the project:
 
 ```bash
-mvn clean install
+./mvnw clean install
 ```
 
-3. Ejecuta la aplicación:
+(Or use `mvn clean install` if Maven is installed globally)
+
+3. Run the application:
 
 ```bash
-mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
-4. La API estará disponible en:
+4. The API will be available at:
 
 ```
 http://localhost:8080
@@ -58,73 +60,81 @@ http://localhost:8080
 
 ---
 
-## 📦 Estructura del Proyecto
+## 📦 Project Structure
 
+```id="backend-structure"
+backend/
+ ├── .mvn/wrapper/                # Maven wrapper configuration
+ ├── src/
+ │   └── main/
+ │       ├── java/com/diw/practica/
+ │       │   ├── controller/      # REST controllers
+ │       │   ├── service/         # Business logic
+ │       │   ├── repository/      # Data access layer
+ │       │   ├── model/           # JPA entities
+ │       │   └── dto/             # Data transfer objects (if used)
+ │       └── resources/
+ │           ├── application.properties
+ │           └── data.sql (optional)
+ ├── .gitattributes
+ ├── .gitignore
+ ├── Dockerfile                   # Backend container setup
+ ├── mvnw                         # Maven wrapper (Unix)
+ ├── mvnw.cmd                     # Maven wrapper (Windows)
+ ├── pom.xml                      # Maven configuration
+ └── README.md
 ```
-src/
- └── main/
-     ├── java/
-     │   └── com/example/library/
-     │       ├── controller/    # Controladores REST
-     │       ├── service/       # Lógica de negocio
-     │       ├── repository/    # Acceso a datos
-     │       ├── model/         # Entidades JPA
-     │       └── dto/           # Objetos de transferencia de datos
-     └── resources/
-         ├── application.properties
-         └── data.sql (opcional)
-```
 
 ---
 
-## 📚 Endpoints Principales
+## 📚 Main Endpoints
 
-### 📖 Libros
+### 📖 Books
 
-| Método | Endpoint        | Descripción              |
-| ------ | --------------- | ------------------------ |
-| GET    | /api/books      | Obtener todos los libros |
-| GET    | /api/books/{id} | Obtener libro por ID     |
-| POST   | /api/books      | Crear un nuevo libro     |
-| PUT    | /api/books/{id} | Actualizar un libro      |
-| DELETE | /api/books/{id} | Eliminar un libro        |
-
----
-
-### 👤 Usuarios
-
-| Método | Endpoint        | Descripción            |
-| ------ | --------------- | ---------------------- |
-| GET    | /api/users      | Listar usuarios        |
-| GET    | /api/users/{id} | Obtener usuario por ID |
-| POST   | /api/users      | Crear usuario          |
-| DELETE | /api/users/{id} | Eliminar usuario       |
+| Method | Endpoint        | Description       |
+| ------ | --------------- | ----------------- |
+| GET    | /api/books      | Get all books     |
+| GET    | /api/books/{id} | Get book by ID    |
+| POST   | /api/books      | Create a new book |
+| PUT    | /api/books/{id} | Update a book     |
+| DELETE | /api/books/{id} | Delete a book     |
 
 ---
 
-### 🔄 Préstamos
+### 👤 Users
 
-| Método | Endpoint               | Descripción       |
-| ------ | ---------------------- | ----------------- |
-| GET    | /api/loans             | Listar préstamos  |
-| POST   | /api/loans             | Crear préstamo    |
-| PUT    | /api/loans/{id}/return | Marcar devolución |
+| Method | Endpoint        | Description    |
+| ------ | --------------- | -------------- |
+| GET    | /api/users      | Get all users  |
+| GET    | /api/users/{id} | Get user by ID |
+| POST   | /api/users      | Create a user  |
+| DELETE | /api/users/{id} | Delete a user  |
+
+---
+
+### 🔄 Loans
+
+| Method | Endpoint               | Description           |
+| ------ | ---------------------- | --------------------- |
+| GET    | /api/loans             | Get all loans         |
+| POST   | /api/loans             | Create a loan         |
+| PUT    | /api/loans/{id}/return | Mark loan as returned |
 
 ---
 
 ## 🧪 Testing
 
-Ejecuta los tests con:
+Run tests with:
 
 ```bash
-mvn test
+./mvnw test
 ```
 
 ---
 
-## 🌍 Variables de Entorno (Opcional)
+## 🌍 Environment Variables (Optional)
 
-Puedes evitar credenciales hardcodeadas usando variables de entorno:
+Avoid hardcoding credentials by using environment variables:
 
 ```properties
 spring.datasource.username=${DB_USER}
@@ -133,9 +143,9 @@ spring.datasource.password=${DB_PASSWORD}
 
 ---
 
-## 🐳 Docker (Opcional)
+## 🐳 Docker (Optional)
 
-Ejemplo básico de `docker-compose.yml` para levantar MySQL:
+Basic `docker-compose.yml` example for running MySQL:
 
 ```yaml
 version: '3.8'
@@ -152,14 +162,14 @@ services:
 
 ---
 
-## 📌 Notas
+## 📌 Notes
 
-* Se recomienda usar **Postman** o **Insomnia** para probar la API.
-* Puedes habilitar logs SQL para debugging.
-* El proyecto está preparado para escalar hacia arquitectura de microservicios.
+* Use tools like **Postman** or **Insomnia** to test the API.
+* SQL logging can be enabled for debugging purposes.
+* The project is structured to scale towards microservices architecture.
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Author
 
-Desarrollado como parte de un sistema de gestión de biblioteca.
+Developed as part of a Library Management System (Backend API).
