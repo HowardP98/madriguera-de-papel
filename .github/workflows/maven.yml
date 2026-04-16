@@ -22,7 +22,9 @@ jobs:
         cache: maven
 
     - name: Build and Package
-      run: mvn -B package --file pom.xml
+      working-directory: ./backend
+      run: mvn -B package
 
     - name: Run Unit Tests
+      working-directory: ./backend
       run: mvn test
