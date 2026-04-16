@@ -2,6 +2,8 @@
 
 > Full-stack web application for managing an online library, featuring a robust **Java 21 + Spring Boot backend** and a modern **Vue.js 3 frontend** styled with Tailwind CSS.
 
+![Java Library System CI](https://github.com/HowardP98/online-library-system/actions/workflows/maven.yml/badge.svg)
+
 ---
 
 ## 🚀 Live Overview
