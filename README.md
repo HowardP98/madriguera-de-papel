@@ -39,12 +39,17 @@
 
 ```bash
 online-library-system/
- ├── backend/            # Spring Boot API
- ├── frontend/           # Vue 3 + Tailwind UI
- ├── docker-compose.yml  # Full-stack container orchestration
- ├── .gitignore          # Version control exclusion rules
- ├── LICENSE             # MIT License
- └── README.md           # Main documentation
+├── .github/
+│   └── workflows/
+│       └── maven.yml          # CI/CD Pipeline (Automated Testing)
+├── backend/                   # Spring Boot REST API (Java 17)
+│   ├── src/                   # Business logic and Tests
+│   └── pom.xml                # Maven Dependencies
+├── frontend/                  # Vue 3 + Tailwind CSS User Interface
+├── docker-compose.yml         # Container orchestration for Dev/Prod
+├── .gitignore                 # Exclusion rules for version control
+├── LICENSE                    # MIT License
+└── README.md                  # Main project documentation
 ```
 
 ---
